@@ -10,7 +10,7 @@ import SlugInput from '../../inputs/Slug/SlugInput'
 
 import {SanityArrayInput} from '../inputs/SanityArrayInput'
 import Image from '../inputs/SanityImageInput'
-import * as SanityFileInput from '../inputs/SanityFileInput'
+import SanityFileInput from '../inputs/SanityFileInput'
 
 export default {
   object: ObjectInput,

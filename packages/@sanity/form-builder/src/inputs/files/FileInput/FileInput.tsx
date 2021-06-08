@@ -65,7 +65,7 @@ type Field = {
 // We alias DOM File type here to distinguish it from the type of the File value
 type DOMFile = globalThis.File
 
-interface File extends Partial<BaseFile> {
+export interface File extends Partial<BaseFile> {
   _upload?: UploadState
 }
 
