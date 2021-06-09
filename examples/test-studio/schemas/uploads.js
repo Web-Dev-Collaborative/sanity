@@ -2,7 +2,6 @@ import {MdFileUpload as icon} from 'react-icons/md'
 import petsAssetSource from '../src/assetSources/pets'
 import noopAssetSource from '../src/assetSources/noop'
 
-
 export default {
   name: 'uploadsTest',
   type: 'document',
