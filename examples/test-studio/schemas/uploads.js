@@ -1,4 +1,7 @@
 import {MdFileUpload as icon} from 'react-icons/md'
+import petsAssetSource from '../src/assetSources/pets'
+import noopAssetSource from '../src/assetSources/noop'
+
 
 export default {
   name: 'uploadsTest',
@@ -59,6 +62,27 @@ export default {
         {type: 'file', title: 'File'},
         {type: 'image', title: 'Image'},
       ],
+    },
+    {
+      name: 'onlyOneFile',
+      title: 'File',
+      description: 'A lonely file',
+      type: 'file',
+    },
+    {
+      name: 'onlyOneFileWithCustomAssetSource',
+      title: 'File with custom asset source',
+      description: 'A lonely file',
+      type: 'file',
+      options: {
+        sources: [petsAssetSource, noopAssetSource],
+      },
+    },
+    {
+      name: 'onlyOneImage',
+      title: 'Image',
+      description: 'A lonely image',
+      type: 'image',
     },
     {
       name: 'imagesAndFilesInGrid',
