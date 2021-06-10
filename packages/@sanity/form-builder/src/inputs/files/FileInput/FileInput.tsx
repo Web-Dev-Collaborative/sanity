@@ -45,7 +45,7 @@ import {
 import {PresenceOverlay} from '@sanity/base/presence'
 import {FormFieldPresence} from '@sanity/base/lib/presence'
 import WithMaterializedReference from '../../../utils/WithMaterializedReference'
-import {Uploader, UploaderResolver} from '../../../sanity/uploads/types'
+import {Uploader, UploaderResolver, UploadOptions} from '../../../sanity/uploads/types'
 import PatchEvent, {set, setIfMissing, unset} from '../../../PatchEvent'
 import {FormBuilderInput} from '../../../FormBuilderInput'
 import UploadPlaceholder from '../common/UploadPlaceholder'
