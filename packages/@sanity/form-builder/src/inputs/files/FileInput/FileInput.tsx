@@ -40,6 +40,7 @@ import {
   MenuItem,
   Stack,
   Text,
+  Tooltip,
   ToastParams,
 } from '@sanity/ui'
 import {PresenceOverlay} from '@sanity/base/presence'
@@ -227,6 +228,7 @@ export default class FileInput extends React.PureComponent<Props, FileInputState
   }
 
   renderMaterializedAsset = (assetDocument: FileAsset) => {
+    const showTooltip = (assetDocument?.originalFilename || '').length > 12
     return (
       <Stack space={3}>
         <Flex align="center" justify="center">
@@ -236,9 +238,29 @@ export default class FileInput extends React.PureComponent<Props, FileInputState
             </Text>
           </Box>
           <Box marginLeft={3}>
-            <Text textOverflow="ellipsis" weight="medium">
-              {assetDocument.originalFilename}
-            </Text>
+            {showTooltip && (
+              <Tooltip
+                content={
+                  <Box padding={2}>
+                    <Text muted size={1}>
+                      {assetDocument.originalFilename}
+                    </Text>
+                  </Box>
+                }
+                fallbackPlacements={['right', 'left']}
+                placement="top"
+                portal
+              >
+                <Text textOverflow="ellipsis" weight="medium">
+                  {assetDocument.originalFilename}
+                </Text>
+              </Tooltip>
+            )}
+            {!showTooltip && (
+              <Text textOverflow="ellipsis" weight="medium">
+                {assetDocument.originalFilename}
+              </Text>
+            )}
           </Box>
         </Flex>
 
