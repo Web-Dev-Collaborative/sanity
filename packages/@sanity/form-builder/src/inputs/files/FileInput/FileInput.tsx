@@ -87,7 +87,7 @@ export type Props = {
   presence: FormFieldPresence[]
 }
 
-const HIDDEN_FIELDS = ['asset', 'hotspot', 'crop']
+const HIDDEN_FIELDS = ['asset']
 
 type FileInputState = {
   isUploading: boolean
@@ -221,7 +221,6 @@ export default class FileInput extends React.PureComponent<Props, FileInputState
         this.clearUploadStatus()
       },
       complete: () => {
-        onChange(PatchEvent.from([unset(['hotspot']), unset(['crop'])]))
         this.setState({isUploading: false})
       },
     })
@@ -404,8 +403,6 @@ export default class FileInput extends React.PureComponent<Props, FileInputState
             setIfMissing({
               _type: type.name,
             }),
-            unset(['hotspot']),
-            unset(['crop']),
             set(
               {
                 _type: 'reference',

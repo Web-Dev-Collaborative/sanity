@@ -50,6 +50,14 @@ const Container = styled(Checkerboard)`
   padding-bottom: 100%;
 `
 
+const AbsoluteFlex = styled(Flex)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+`
+
 const CardContainer = styled(Card)`
   position: relative;
   z-index: 1;
@@ -174,20 +182,13 @@ export default class Asset extends React.PureComponent<AssetProps, State> {
                 />
               )}
               {!isPreviewable && (
-                <Flex
+                <AbsoluteFlex
                   title={originalFilename}
                   onClick={onClick}
                   data-id={_id}
                   align="center"
                   justify="center"
                   padding={3}
-                  style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                  }}
                 >
                   <Stack space={3}>
                     <Heading align="center">
@@ -197,7 +198,7 @@ export default class Asset extends React.PureComponent<AssetProps, State> {
                       {originalFilename}
                     </Text>
                   </Stack>
-                </Flex>
+                </AbsoluteFlex>
               )}
               {isDeleting && <FullscreenSpinner />}
             </CardContainer>

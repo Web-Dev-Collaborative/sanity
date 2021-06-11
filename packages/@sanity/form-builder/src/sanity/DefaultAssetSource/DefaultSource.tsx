@@ -15,8 +15,7 @@ interface AssetType {
   _id: string
   url: string
 }
-
-type Props = {
+interface Props {
   onSelect: (arg0: AssetFromSource[]) => void
   onClose: () => void
   selectedAssets: AssetType[]
