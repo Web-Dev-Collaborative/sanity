@@ -1,6 +1,7 @@
 import React from 'react'
-import {Box, Flex, Spinner, Stack, Text} from '@sanity/ui'
+import {Box, Flex, Stack, Text, Skeleton, TextSkeleton} from '@sanity/ui'
 import styled from 'styled-components'
+import {PreviewProps} from './types'
 
 const Root = styled(Flex)`
   height: 40px;
@@ -40,19 +41,28 @@ const MediaWrapper = styled(Flex)`
   }
 `
 
-export function DefaultPreview(props) {
-  const {title, subtitle, media, status, isPlaceholder} = props
+export const DefaultPreview = (props: PreviewProps<'default'>) => {
+  const {title, subtitle, media, status, isPlaceholder, children} = props
 
   return (
     <Root align="center">
-      {isPlaceholder && <Spinner />}
+      {isPlaceholder && (
+        <>
+          <Skeleton style={{width: 40, height: 40}} radius={2} marginRight={3} animated />
+          <Stack space={2} flex={1}>
+            <TextSkeleton style={{maxWidth: 320}} radius={1} animated />
+            <TextSkeleton style={{maxWidth: 200}} radius={1} size={1} animated />
+          </Stack>
+        </>
+      )}
       {!isPlaceholder && (
         <>
           {media !== false && media !== undefined && (
             <MediaWrapper align="center" justify="center" marginRight={3}>
               {typeof media === 'function' &&
                 media({
-                  dimensions: {width: 80, height: 80, aspect: 1, fit: 'crop', layout: 'default'},
+                  dimensions: {width: 80, height: 80, aspect: 1, fit: 'crop'},
+                  layout: 'default',
                 })}
 
               {typeof media === 'string' && <div>{media}</div>}
@@ -60,8 +70,9 @@ export function DefaultPreview(props) {
               {React.isValidElement(media) && media}
             </MediaWrapper>
           )}
+
           <Stack space={2} flex={1}>
-            <Text textOverflow="ellipsis" style={{color: 'inherit'}}>
+            <Text textOverflow="ellipsis" style={{color: 'inherit'}} as="h2">
               {title && (
                 <>
                   {typeof title !== 'function' && title}
@@ -70,12 +81,22 @@ export function DefaultPreview(props) {
               )}
               {!title && <>Untitled</>}
             </Text>
+
             {subtitle && (
-              <Text size={1} muted textOverflow="ellipsis">
+              <Text
+                size={1}
+                muted
+                textOverflow="ellipsis"
+                style={{color: 'inherit', opacity: 0.75}}
+                as="h3"
+              >
                 {(typeof subtitle === 'function' && subtitle({layout: 'default'})) || subtitle}
               </Text>
             )}
+
+            {children && <div>{children}</div>}
           </Stack>
+
           {status && (
             <Box marginLeft={3}>
               {(typeof status === 'function' && status({layout: 'default'})) || status}
