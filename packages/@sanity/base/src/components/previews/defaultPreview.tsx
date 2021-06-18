@@ -9,7 +9,6 @@ const Root = styled(Flex)`
 
 const MediaWrapper = styled(Flex)`
   position: relative;
-  flex-basis: 2.5em;
   width: 2.5em;
   height: 2.5em;
   min-width: 2.5em;
