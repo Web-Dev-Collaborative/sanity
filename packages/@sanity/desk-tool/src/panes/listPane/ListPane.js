@@ -108,12 +108,12 @@ export default class ListPane extends React.PureComponent {
         menuItemGroups={menuItemGroups}
       >
         <ListView layout={defaultLayout}>
-          <Stack space={2} paddingY={2} overflow="auto">
+          <Stack space={1} paddingY={1} overflow="auto">
             {items.map((item) =>
               item.type === 'divider' ? (
                 <hr className={listStyles.divider} key={item.id} />
               ) : (
-                <Box key={item.id} paddingX={2}>
+                <Box key={item.id} paddingX={1}>
                   <PaneItem
                     id={item.id}
                     index={index}
